@@ -1,14 +1,4 @@
 
-local Float = Instance.new("Part",workspace);
-Float.Size = Vector3.new(100,1,100);
-Float.Position = Vector3.new(10000,10000,10000);
-Float.Name = "EXPLOITPART"
-Float.Material = "Neon"
-Float.Anchored = true;
-Float.CanCollide = true;
-Float.Transparency = 0;
-
-
 --GUI
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("The Rake(Noob Edition)", "BloodTheme")
@@ -28,6 +18,8 @@ local CreditsSection = Tab:NewSection("Credits")
 local Tab = Window:NewTab("Cool Players!")
 local CoolSection = Tab:NewSection("Cool Players!")
 --BUTTONS
+
+
 MainSection:NewButton("Fullbright", "Lets you see in the dark", function()
     game.Lighting.DepthOfField:Destroy()
 game.Lighting.Atmosphere:Destroy()
@@ -482,6 +474,16 @@ CreditsSection:NewLabel("Gui by 3EloHIyChay123123")
 
 
 TPSection:NewButton("SafeZone", "You teleport far to the object", function()
+
+local Float = Instance.new("Part",workspace);
+Float.Size = Vector3.new(100,1,100);
+Float.Position = Vector3.new(10000,10000,10000);
+Float.Name = "EXPLOITPART"
+Float.Material = "Neon"
+Float.Anchored = true;
+Float.CanCollide = true;
+Float.Transparency = 0;
+
 local p1 = game.Players.LocalPlayer.Character.HumanoidRootPart
 p1.CFrame = game.Workspace.EXPLOITPART.CFrame
 
@@ -1788,3 +1790,4 @@ end
 game_meta.__namecall = on_namecall
 end)
 
+CoolSection:NewLabel("Survivals_BEX (@Survivals_BEX)")
