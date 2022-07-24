@@ -305,7 +305,6 @@ PlayerSection:NewButton("Reload Stamina", "You can reload your stamina", functio
     for i, player in pairs(game.Players:GetChildren()) do   wait()   game.Workspace[player.Name]['CharValues'].StaminaPercentValue.Value = 10000 end
 end)
 PlayerSection:NewButton("Remove Barreras", "If you touch Barreras twice you will be kicked", function()
-    game.Workspace.MapTopPart:Destroy()
     game.Workspace.Barreras:Destroy()
 end)
 PlayerSection:NewButton("Remove PowerDamage", "If you touch electric pasts then you will not take damage", function()
@@ -1968,3 +1967,21 @@ PlayerSection:NewToggle("Open ShopGui", "Open a shop anywhere", function(state)
         game.Workspace.LocationsFolder.Shop.EnterShopPart.Size = Vector3.new(9, 13, 12)
     end
 end)
+
+PlayerSection:NewButton("Remove Vitamins?", "Removes vitamins from your inventory", function()
+    game.Players.LocalPlayer.Backpack.Vitamins:Destroy()
+end)
+
+PlayerSection:NewButton("Remove Taser?", "Removes tasers from your inventory", function()
+    game.Players.LocalPlayer.Backpack.Taser:Destroy()
+end)
+
+PlayerSection:NewButton("Remove Tracker?", "Removes tracker from your inventory", function()
+    game.Players.LocalPlayer.Backpack.Tracker:Destroy()
+end)
+
+PlayerSection:NewButton("Remove Lamp?", "Removes lamp from your inventory", function()
+    game.Players.LocalPlayer.Backpack.Lamp:Destroy()
+end)
+
+CoolSection:NewLabel("YTHackhkahsdYT(@hackhkahsd_YTll)")
