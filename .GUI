@@ -1,7 +1,6 @@
-
 --GUI
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("The Rake(Noob Edition)", "BloodTheme")
+local Window = Library.CreateLib("The Rake(Noob Edition)", "Midnight")
 --MAIN
 local Tab = Window:NewTab("Main")
 local MainSection = Tab:NewSection("Main")
@@ -13,12 +12,17 @@ local Tab = Window:NewTab("ESP")
 local ESPSection = Tab:NewSection("ESP")
 local Tab = Window:NewTab("Scripts")
 local ScriptsSection = Tab:NewSection("Scripts")
+local Tab = Window:NewTab("Game Stats")
+local GameSection = Tab:NewSection("Game Stats")
+local Tab = Window:NewTab("Fun SafeZone")
+local FunSection = Tab:NewSection("Fun SafeZone")
+local Tab = Window:NewTab("Settings")
+local SetSection = Tab:NewSection("Settings")
 local Tab = Window:NewTab("Credits")
 local CreditsSection = Tab:NewSection("Credits")
 local Tab = Window:NewTab("Cool Players!")
 local CoolSection = Tab:NewSection("Cool Players!")
 --BUTTONS
-
 MainSection:NewButton("Fullbright", "Lets you see in the dark", function()
 game.Lighting.DepthOfField:Destroy()
 game.Lighting.Atmosphere:Destroy()
@@ -320,52 +324,94 @@ PlayerSection:NewButton("Remove Unnecessary Gui", "Get out gui chase, bloody nig
     game.Players.LocalPlayer.PlayerGui.RakeChaseGui:Destroy()
 end)
 ESPSection:NewButton("The Rake", "You can see the rake in the distance", function()
-    for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'The_Rake' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-				BillboardGui.MaxDistance = 100000
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "The Rake" -- what the label says
-				TextLabel.TextColor3 = Color3.new(225, 0, 0) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
-	
-end)
-ESPSection:NewButton("FlareGun(Ones time)", "You can see FlareGun in the distance", function()
-    for i,v in pairs(game.Workspace:GetDescendants()) do
-if v.ClassName == "TouchTransmitter" and v.Parent.Name == "Handle" then -- i am just wondering that the part u wanna esp have these properties u can change them if it doesnt work
+text = "The Rake"
+item = game:GetService("Workspace").The_Rake.HumanoidRootPart
 local BillboardGui = Instance.new("BillboardGui")
 local TextLabel = Instance.new("TextLabel")
-
-BillboardGui.Parent = v.Parent
+local TextLabel1 = Instance.new("TextLabel")  
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
 BillboardGui.AlwaysOnTop = true
 BillboardGui.LightInfluence = 1
-BillboardGui.Size = UDim2.new(0, 50, 0, 50)
-BillboardGui.StudsOffset = Vector3.new(0, 2, 0)
-
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
 TextLabel.Parent = BillboardGui
 TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
 TextLabel.BackgroundTransparency = 1
-TextLabel.Size = UDim2.new(1, 0, 1, 0)
-TextLabel.Text = "FlareGun"
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
 TextLabel.TextColor3 = Color3.new(1, 0, 0)
-TextLabel.TextScaled = true
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
+TextLabel1.Parent = BillboardGui
+TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel1.BackgroundTransparency = 1
+TextLabel1.Size = UDim2.new(0, 200, 0, 50)
+TextLabel1.Font = Enum.Font.SourceSans
+TextLabel1.Font = "Legacy"
+TextLabel1.TextScaled = false
+TextLabel1.TextStrokeTransparency = 0
+TextLabel1.TextSize = 8
+TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
+TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
+while true do
+wait(0)
+TextLabel1.Text = "Health: ".. workspace.The_Rake.NPC.Health
+if workspace.BeingOrangesHour.Value == true then
+TextLabel1.TextColor3 = Color3.fromRGB(225, 100, 0)
+else
+if workspace.BeingCorruptedHour.Value == true then
+TextLabel1.TextColor3 = Color3.fromRGB(100, 0, 225)
+else
+if workspace.BeingBloodHour.Value == true then
+TextLabel1.TextColor3 = Color3.fromRGB(150, 0, 0)
+else
+if workspace.BeingCheeseHour.Value == true then
+TextLabel1.TextColor3 = Color3.fromRGB(225, 225, 0)
+else
+if workspace.BeingNightmareHour.Value == true then
+TextLabel1.TextColor3 = Color3.fromRGB(0, 225, 0)
+else 
+if workspace.BeingBloodHour or workspace.BeingNightmareHour or workspace.BeingOrangesHour or workspace.BeingCheeseHourValue == false then
+TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
+end
+end
+end
+end
+end
 end
 end
 end)
-
+ESPSection:NewButton("FlareGun(Ones time)", "You can see FlareGun in the distance", function()
+text = "FlareGun"
+item = game:GetService("Workspace").FlareGun.Handle
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(1, 0, 0)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
+end)
 PlayerSection:NewButton("SUS", "?", function()
 local A_1 = "imposter"
 local Event = game:GetService("Players").ForAnyGame123.PlayerGui.CodeGui.SendTextBoxRE
@@ -476,10 +522,16 @@ game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatChannelParentFrame.Visible = t
 game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = UDim2.new(0, 0, 1, -42)
 end)
 
-CreditsSection:NewLabel("Gui by 3EloHIyChay123123 (Banned)")
-CreditsSection:NewLabel("Gui by ForAnyGame123")
+CreditsSection:NewLabel("-=Owner=-")
+CreditsSection:NewLabel("3EloHIyChay123123(Banned)")
+CreditsSection:NewLabel("ForAnyGame123(@3EloHIyChay123123)")
+CreditsSection:NewLabel("-=Helper=-")
+CreditsSection:NewLabel("13Ainaz")
+CreditsSection:NewLabel("-=Thanks to-=")
+CreditsSection:NewLabel("Weew_124")
 
 TPSection:NewButton("SafeZone", "You teleport far to the object", function()
+
 
 local Float = Instance.new("Part",workspace);
 Float.Size = Vector3.new(100,1,100);
@@ -490,6 +542,33 @@ Float.Anchored = true;
 Float.CanCollide = true;
 Float.Transparency = 0;
 
+local detected = 0
+wait()
+for n, obj in pairs(game.Workspace:GetChildren()) do
+	if obj.Name == 'EXPLOITPART' then
+		detected = detected + 1
+	end
+	if detected >= 2 then
+		obj:Destroy()
+		detected = detected - 1
+	end
+end
+
+function exppart(part)
+	wait()
+	part:Destroy()
+end
+
+game.Workspace.ChildAdded:Connect(function(part)
+	if part.Name == 'EXPLOITPART' then
+		detected = detected + 1
+	end
+	if detected >= 2 then
+		detected = detected - 1
+		exppart(part)
+	end
+end)
+
 local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
 local location = CFrame.new(9996.72949, 10003.4971, 9986.34082, -0.155898228, -6.66379236e-08, 0.98777312, 5.69063801e-08, 1, 7.64442021e-08, -0.98777312, 6.81281094e-08, -0.155898228)
 local humanoid = game.Players.LocalPlayer.Character.Humanoid
@@ -498,149 +577,180 @@ pl.CFrame = location
 end)
 
 ESPSection:NewButton("Scrap", "You can see Scrap in the distance", function()
-    		for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'TriggerPart' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "Scrap" -- what the label says
-				TextLabel.TextColor3 = Color3.new(0.333333, 1, 1) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
+for i,v in pairs(game.Workspace:GetDescendants()) do
+if v.Parent.Name == 'TriggerPart' then
+text = "Scrap"
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+BillboardGui.Parent = v.Parent
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(0, 0.835294, 1)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
+end
+end
 end)
 
 ESPSection:NewButton("Shop", "You can see Shop in the distance", function()
-    		for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'ShopPart' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-				BillboardGui.MaxDistance = 1000000
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "Shop" -- what the label says
-				TextLabel.TextColor3 = Color3.new(225, 225, 225) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
-        
+text = "Shop"
+item = game:GetService("Workspace").LocationsBillboardGuis.ShopPart
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
 end)
 ESPSection:NewButton("SafeHouse (Park)", "You can see SafeHouse in the distance", function()
-    	for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'ParkSafeHousePart' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-				BillboardGui.MaxDistance = 10000000
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "SafeHousePark" -- what the label says
-				TextLabel.TextColor3 = Color3.new(0, 225, 0) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
+text = "SafeHouse (Park)"
+item = game:GetService("Workspace").LocationsBillboardGuis.ParkSafeHousePart
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(0, 1, 0)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
 end)
 ESPSection:NewButton("Power Station", "You can see PowerStation in the distance", function()
-    		for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'PowerStationPart' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-				BillboardGui.MaxDistance = 100000
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "PowerStation" -- what the label says
-				TextLabel.TextColor3 = Color3.new(80.333333, 80.333333, 0.333333) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
+text = "PowerStation"
+item = game:GetService("Workspace").LocationsBillboardGuis.PowerStationPart
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel1 = Instance.new("TextLabel")
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(1, 1, 0)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
+TextLabel1.Parent = BillboardGui
+TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel1.BackgroundTransparency = 1
+TextLabel1.Size = UDim2.new(0, 200, 0, 50)
+TextLabel1.Font = Enum.Font.SourceSans
+TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
+TextLabel1.Font = "Legacy"
+TextLabel1.TextColor3 = Color3.new(1, 1, 0)
+TextLabel1.TextScaled = false
+TextLabel1.TextStrokeTransparency = 0
+TextLabel1.TextSize = 8
+TextLabel1.TextWrapped = true
+while true do
+wait(0)
+TextLabel1.Text = workspace.PowerTimer.Value
+end
 end)
 
 ESPSection:NewButton("LootBox", "You can see LootBox in the distance", function()
-    		for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'SupplyDrop' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-				BillboardGui.MaxDistance = 1000000
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "LootBox" -- what the label says
-				TextLabel.TextColor3 = Color3.new(0.333333, 0.333333, 0.333333) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
+text = "SupplyDrop"
+item = game:GetService("Workspace").SupplyDrop.Model2.ClickPartOpen
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(1, 0, 1)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
 end)
 ESPSection:NewButton("SafeHouse (Survivors)", "You can see SafeHouse in the distance", function()
-    		for i,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Parent.Name == 'SurvivorsSafeHousePart' then
-	
-				local BillboardGui = Instance.new('BillboardGui') -- Makes Billboardgui
-				local TextLabel = Instance.new('TextLabel') -- makes text label
-	
-				BillboardGui.Parent = v.Parent -- what the billboardgui goes into
-				BillboardGui.AlwaysOnTop = true -- if its on top or not
-				BillboardGui.Size = UDim2.new(0, 50, 0, 50) -- size of it
-				BillboardGui.StudsOffset = Vector3.new(0,2,0)
-				BillboardGui.MaxDistance = 1000000
-	
-				TextLabel.Parent = BillboardGui -- putting textlabel into billboardgui
-				TextLabel.BackgroundTransparency = 1 -- transparency
-				TextLabel.Size = UDim2.new(2, 5, 2, 5) -- size
-				TextLabel.Text = "SafeHouseSurvivors" -- what the label says
-				TextLabel.TextColor3 = Color3.new(100.333333, 100.333333, 100.333333) -- color
-				TextLabel.TextScaled = false -- if the text is scaled or not
-	
-			end
-		end
-	
+text = "SafeHouse (Survivors)"
+item = game:GetService("Workspace").LocationsBillboardGuis.SurvivorsSafeHousePart
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(0, 1, 0.45098)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
 end)
 
 ESPSection:NewButton("Coals", "You can see Coals in the distance", function()
-    for __,v in pairs(game.Workspace.StuffGiversFolder.MegaFishCoalParts:GetChildren()) do
+for __,v in pairs(game.Workspace.StuffGiversFolder.MegaFishCoalParts:GetChildren()) do
 if v:IsA("Model") or v:IsA("Part") or v:IsA("MeshPart") then
 local a = Instance.new("BillboardGui",v)
 a.Size = UDim2.new(1,0, 1,0)
@@ -649,7 +759,10 @@ a.AlwaysOnTop = true
 local c = Instance.new("TextLabel",a)
 c.Name = "Stupid Text"
 c.TextColor3 = Color3.new(0.666666, 0.666666, 0.666666)
-c.Text = v.Name
+c.Text = "Coal"
+c.Font = "Legacy"
+c.TextStrokeTransparency = 0
+c.TextSize = 8
 c.Size = UDim2.new(1,0, 1,0)
 c.BackgroundTransparency = 1
 c.BorderSizePixel = 0
@@ -659,7 +772,7 @@ end)
 
 
 ESPSection:NewButton("Ducks", "You can see Ducks in the distance", function()
-    for __,v in pairs(game.Workspace.StuffGiversFolder.DuckParts:GetChildren()) do
+for __,v in pairs(game.Workspace.StuffGiversFolder.DuckParts:GetChildren()) do
 if v:IsA("Model") or v:IsA("Part") or v:IsA("MeshPart") then
 local a = Instance.new("BillboardGui",v)
 a.Size = UDim2.new(1,0, 1,0)
@@ -667,8 +780,11 @@ a.Name = "Ducks"
 a.AlwaysOnTop = true
 local c = Instance.new("TextLabel",a)
 c.Name = "Stupid Text"
-c.TextColor3 = Color3.new(0.666666, 0, 0.666666)
-c.Text = v.Name
+c.TextColor3 = Color3.new(0.694118, 0.439216, 1)
+c.Text = "Duck"
+c.Font = "Legacy"
+c.TextStrokeTransparency = 0
+c.TextSize = 8
 c.Size = UDim2.new(1,0, 1,0)
 c.BackgroundTransparency = 1
 c.BorderSizePixel = 0
@@ -1872,16 +1988,19 @@ TPSection:NewToggle("Tp All Coals to SafeZone", "In the TPs tab there is a safez
 end)
 
 ESPSection:NewButton("Pan spawns", "You can see where spawns pan in the distance", function()
-    for __,v in pairs(game.Workspace.StuffGiversFolder.PanGiverSpawns:GetChildren()) do
+for __,v in pairs(game.Workspace.StuffGiversFolder.PanGiverSpawns:GetChildren()) do
 if v:IsA("Model") or v:IsA("Part") or v:IsA("MeshPart") then
 local a = Instance.new("BillboardGui",v)
 a.Size = UDim2.new(1,0, 1,0)
-a.Name = "Pan"
+a.Name = "Pans"
 a.AlwaysOnTop = true
 local c = Instance.new("TextLabel",a)
 c.Name = "Stupid Text"
-c.TextColor3 = Color3.new(0.888888, 0.888888, 0.888888)
-c.Text = v.Name
+c.TextColor3 = Color3.new(1, 0.364706, 0)
+c.Text = "PanSpawn"
+c.Font = "Legacy"
+c.TextStrokeTransparency = 0
+c.TextSize = 8
 c.Size = UDim2.new(1,0, 1,0)
 c.BackgroundTransparency = 1
 c.BorderSizePixel = 0
@@ -1943,7 +2062,7 @@ end)
 
 
 ESPSection:NewButton("Chips spawns", "You can see where spawns chips in the distance", function()
-    for __,v in pairs(game.Workspace.StuffGiversFolder.ChipsGiverasFolder:GetChildren()) do
+for __,v in pairs(game.Workspace.StuffGiversFolder.ChipsGiversFolder:GetChildren()) do
 if v:IsA("Model") or v:IsA("Part") or v:IsA("MeshPart") then
 local a = Instance.new("BillboardGui",v)
 a.Size = UDim2.new(1,0, 1,0)
@@ -1951,8 +2070,11 @@ a.Name = "Chips"
 a.AlwaysOnTop = true
 local c = Instance.new("TextLabel",a)
 c.Name = "Stupid Text"
-c.TextColor3 = Color3.new(80.333333, 80.333333, 0.333333)
-c.Text = v.Name
+c.TextColor3 = Color3.new(0.866667, 1, 0)
+c.Text = "ChipsSpawn"
+c.Font = "Legacy"
+c.TextStrokeTransparency = 0
+c.TextSize = 8
 c.Size = UDim2.new(1,0, 1,0)
 c.BackgroundTransparency = 1
 c.BorderSizePixel = 0
@@ -1985,3 +2107,85 @@ PlayerSection:NewButton("Remove Lamp?", "Removes lamp from your inventory", func
 end)
 
 CoolSection:NewLabel("YTHackhkahsdYT(@hackhkahsd_YTll)")
+
+PlayerSection:NewButton("Get All Ducks", "Well, now you can take all the ducks at once", function()
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart1.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart2.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart3.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart4.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart5.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart6.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart7.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart8.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart9.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.DuckParts.DuckPart10.ClickDetector)
+end)
+
+PlayerSection:NewButton("Get All Coals", "Same as function above", function()
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart1.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart2.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart3.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart4.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart5.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart6.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart7.ClickDetector)
+fireclickdetector(workspace.StuffGiversFolder.MegaFishCoalParts.CoalPart8.ClickDetector)
+end)
+
+FunSection:NewColorPicker("Plate Color", "Change plate color", Color3.fromRGB(225,225,225), function(s)
+    game.Workspace.EXPLOITPART.Color = s
+end)
+
+FunSection:NewDropdown("Plate Material", "Change plate material", {"Plastic", "Wood", "Slate", "Concrete", "CorrodedMetal","DiamondPlate","Foil","Grass","Ice","Marble","Granite","Brick","Pebble","Sand","Fabric","SmoothPlastic","Metal","WoodPlanks","Cobblestone","Rock","Glacier","Snow","Sandstone","Mud","Basalt","Ground","CrackedLava","Neon","Glass","Asphalt","LeafyGrass","Salt","Limestone","Pavement","ForceField"}, function(s)
+    game.Workspace.EXPLOITPART.Material = s
+end)
+
+SetSection:NewKeybind("Toggle UI", "", Enum.KeyCode.RightShift, function()
+	Library:ToggleUI()
+end)
+
+SetSection:NewLabel("Support")
+
+SetSection:NewButton("Support 1 (Check clipboard)", "15 robux", function()
+    setclipboard("https://www.roblox.com/game-pass/79343256/Support-1")
+end)
+SetSection:NewButton("Support 2 (Check clipboard)", "50 robux", function()
+    setclipboard("https://www.roblox.com/game-pass/79343900/Support-2")
+end)
+SetSection:NewButton("Support 3 (Check clipboard)", "100 robux", function()
+    setclipboard("https://www.roblox.com/game-pass/79344876/Support-3")
+end)
+SetSection:NewButton("Support 4 (Check clipboard)", "500 robux", function()
+    setclipboard("https://www.roblox.com/game-pass/79345535/Support-4")
+end)
+local h = GameSection:NewLabel("Hour: None")
+local t = GameSection:NewLabel("")
+local p = GameSection:NewLabel("")
+while true do
+wait(0)
+t:UpdateLabel('Time: '..workspace.GameTimer.Value)
+p:UpdateLabel('Power: '..workspace.PowerTimer.Value)
+if workspace.BeingCheeseHour.Value == true then
+    h:UpdateLabel("Hour: Cheese")
+else
+if workspace.BeingOrangesHour.Value == true then
+    h:UpdateLabel("Hour: Orange")
+else
+if workspace.BeingNightmareHour.Value == true then
+    h:UpdateLabel("Hour: Nightmare")
+else
+if workspace.BeingCorruptedHour.Value == true then
+    h:UpdateLabel("Hour: Corrupted")
+else
+if workspace.BeingBloodHour.Value == true then
+    h:UpdateLabel("Hour: Blood")
+else
+if workspace.BeingBloodHour or workspace.BeingNightmareHour or workspace.BeingOrangesHour or workspace.BeingCheeseHourValue == false then
+    h:UpdateLabel("Hour: None")
+end
+end
+end
+end
+end
+end
+end
